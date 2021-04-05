@@ -1,18 +1,22 @@
-from string import ascii_lowercase
+import string
 
 
-def decode(input):
-    alpha = ascii_lowercase
-    rev_alpha = ascii_lowercase[::-1]
-    output = ""
-    for c in input:
-        if c == " ":
-            output.append(c)
-        for a in alpha:
-            if c == a:
-                output.append(rev_alpha[a])
-
-    return output.join()
+def encryption(input, encrypt):
+    alpha = string.ascii_lowercase
+    rev_alpha = alpha[::-1]
+    trans = (
+        input.maketrans(alpha, rev_alpha)
+        if encrypt
+        else input.maketrans(rev_alpha, alpha)
+    )
+    return input.translate(trans)
 
 
-print(decode("test"))
+def solution(input: str):
+    alpha = string.ascii_lowercase
+    rev_alpha = alpha[::-1]
+    trans = input.maketrans(rev_alpha, alpha)
+    return input.translate(trans)
+
+
+print(solution("Yvzs! I xzm'g yvorvev Lzmxv olhg srh qly zg gsv xlolmb!!"))
