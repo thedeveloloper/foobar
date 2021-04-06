@@ -1,11 +1,12 @@
-import string
+# import string
 
 
 def solution(s):
-    alpha = string.ascii_lowercase
+    alpha = "abcdefghijklmnopqrstuvwxyz"
     rev_alpha = alpha[::-1]
     trans = s.maketrans(rev_alpha, alpha)
     return s.translate(trans)
 
 
-print(solution("aaaaaaaaAaaaaaa"))
+temp = solution("Yvzs! I xzm'g yvorvev Lzmxv olhg srh qly zg gsv xlolmb!!")
+print(temp)
