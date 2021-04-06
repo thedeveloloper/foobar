@@ -1,10 +1,10 @@
-# import string
+import string
 
 
 def solution(s):
     alpha = "abcdefghijklmnopqrstuvwxyz"
     rev_alpha = alpha[::-1]
-    trans = s.maketrans(rev_alpha, alpha)
+    trans = string.maketrans(rev_alpha, alpha)
     return s.translate(trans)
 
 
