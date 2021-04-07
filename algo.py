@@ -1,11 +1,3 @@
-from random import randint
-
-
-def tobase(n, b):
-    digits = []
-    return "".join(digits)
-
-
 def solution(n, b):
     minion_ids = [str(n)]
     loop_start = None
@@ -16,13 +8,20 @@ def solution(n, b):
     while True:
         x = list(str(n))
         x.sort(reverse=True)
-        x = int("".join(x))
+        x = "".join(x)
 
         y = list(str(n))
         y.sort()
-        y = int("".join(y))
+        y = "".join(y)
 
-        z = str(x - y).zfill(k)
+        digits = []
+        ans = int(x, b) - int(y, b)
+
+        while ans > 0:
+            digits.insert(0, str(ans % b))
+            ans = ans // b
+
+        z = "".join(digits).zfill(k)
 
         if z not in minion_ids:
             minion_ids.append(z)
@@ -36,4 +35,4 @@ def solution(n, b):
         n = z
 
 
-print(solution(1211, 3))
+print(solution(210022, 3))
