@@ -1,27 +1,39 @@
 from random import randint
 
 
+def tobase(n, b):
+    digits = []
+    return "".join(digits)
+
+
 def solution(n, b):
+    minion_ids = [str(n)]
+    loop_start = None
+    loop_count = 0
+
     k = len(str(n))
-    rand_int = ""
-    for num in range(k):
-        del num
-        rand_int = f"{rand_int}{randint(0, b - 1)}"
 
-    rand_id = rand_int.zfill(k)
+    while True:
+        x = list(str(n))
+        x.sort(reverse=True)
+        x = int("".join(x))
 
-    x = list(rand_id)
-    x.sort(reverse=True)
-    x = "".join(x).zfill(k)
+        y = list(str(n))
+        y.sort()
+        y = int("".join(y))
 
-    y = list(rand_id)
-    y.sort()
-    y = "".join(y).zfill(k)
+        z = str(x - y).zfill(k)
 
-    z = str(int(x) - int(y)).zfill(k)
+        if z not in minion_ids:
+            minion_ids.append(z)
+        elif z in minion_ids and not loop_start:
+            loop_start = z
+            loop_count += 1
+        elif z == loop_start:
+            return loop_count
+        else:
+            loop_count += 1
+        n = z
 
-    return z
 
-
-solution(210022, 3)
-# print(solution(1001, 10))
+print(solution(1211, 3))
