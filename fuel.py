@@ -1,14 +1,25 @@
 def solution(n):
-    if n % 2 == 0:
-        steps = 1
-        n -= 1
-    else:
-        steps = 0
+    num = int(n)
+    operations = 0
 
-    while n > 1:
-        n = n / 2
-        steps += 1
-    return steps
+    if num == 0:
+        return 1
+    if num < 0:
+        num = num * -1
+        operations = 2
+
+    while num != 1:
+        if num & 1:
+            if num & 2 and num != 3:
+                num += 1
+            else:
+                num -= 1
+        else:
+            num //= 2
+
+        operations += 1
+
+    return operations
 
 
 print(solution(4))
